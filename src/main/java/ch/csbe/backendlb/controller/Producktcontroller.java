@@ -24,8 +24,8 @@ public class Producktcontroller {
     }
 
     @DeleteMapping("{id}")
-    public ProductEntitie deleteById(@RequestBody Long id) {
-        return productService.deleteById(id);
+    public void deleteById(@RequestBody Long id) {
+        productService.deleteById(id);
     }
 
     @PostMapping("")
