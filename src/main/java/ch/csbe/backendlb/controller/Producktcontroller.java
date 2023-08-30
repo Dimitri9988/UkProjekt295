@@ -1,11 +1,18 @@
 package ch.csbe.backendlb.controller;
 
 import ch.csbe.backendlb.resources.product.ProductEntitie;
+import ch.csbe.backendlb.resources.product.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.AutoConfigureOrder;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("products")
 public class Producktcontroller {
+
+    @Autowired ProductService productService;
 
     @GetMapping("{id}")
     public String getProductByid(@PathVariable String id){
@@ -17,16 +24,18 @@ public class Producktcontroller {
     }
 
     @DeleteMapping("{id}")
-    public String deleteProductByid(@PathVariable String id) { return "hier wird mein produckt mit der id = " + id + " gelöscht";
+    public ProductEntitie deleteById(@RequestBody Long id) {
+        return productService.deleteById(id);
     }
 
     @PostMapping("")
-    public ProductEntitie create(@RequestBody Product product) {
+    public ProductEntitie create(@RequestBody ProductEntitie product) {
         return productService.create(product);
     }
 
     @GetMapping("")
-    public String getProducts(){ return "hier währen mein produckte ";
+    public List<ProductEntitie> get() {
+        return productService.get();
     }
 
 }

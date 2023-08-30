@@ -38,4 +38,75 @@ public class ProductEntitie {
 
     private CategoryEntities CategoryEntities;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getSku() {
+        return sku;
+    }
+
+    public void setSku(String sku) {
+        this.sku = sku;
+    }
+
+    public String getActive() {
+        return active;
+    }
+
+    public void setActive(String active) {
+        this.active = active;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getImages() {
+        return images;
+    }
+
+    public void setImages(String images) {
+        this.images = images;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Double getPrise() {
+        return prise;
+    }
+
+    public void setPrise(Double prise) {
+        this.prise = prise;
+    }
+
+    public String getStock() {
+        return stock;
+    }
+
+    public void setStock(String stock) {
+        this.stock = stock;
+    }
+
+    public ch.csbe.backendlb.resources.category.CategoryEntities getCategoryEntities() {
+        return CategoryEntities;
+    }
+
+    public void setCategoryEntities(ch.csbe.backendlb.resources.category.CategoryEntities categoryEntities) {
+        CategoryEntities = categoryEntities;
+    }
 }
