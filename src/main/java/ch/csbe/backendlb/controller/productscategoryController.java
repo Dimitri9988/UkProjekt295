@@ -1,36 +1,59 @@
 package ch.csbe.backendlb.controller;
 
+import ch.csbe.backendlb.resources.category.CategoryEntities;
+import ch.csbe.backendlb.resources.category.CategoryService;
+import ch.csbe.backendlb.resources.product.ProductEntitie;
+import ch.csbe.backendlb.resources.product.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/productscategory")
 public class productscategoryController {
 
-    @GetMapping("{id}")
-    public String getProductcategoryByid(@PathVariable String id){
-        return "hier währe meine producktkategory mit der id = " + id;
+    @Autowired CategoryService categoryService;
+
+    @GetMapping("/{id}")
+    public CategoryEntities getById(@PathVariable Long id) {
+        return categoryService.getById(id);
     }
+
+
+
 
     @GetMapping("{id}/products")
     public String getProductcategoryProductsByid(@PathVariable String id){
         return "hier währe meine producktkategory mit der id und passende Produkte= " + id;
     }
 
-    @PutMapping("{id}")
-    public String putProductcategoryByid(@PathVariable String id) { return "hier währe meine aktualisirtes producktktegory mit der id = " + id;
+
+
+
+
+    @PutMapping("/{id}")
+    public CategoryEntities update(@RequestBody CategoryEntities category,@PathVariable Long id) {
+        return  categoryService.update(id, category );
     }
 
-    @DeleteMapping("{id}")
-    public String deleteProductcategoryByid(@PathVariable String id) { return "hier wird meine producktkategory mit der id = " + id + " gelöscht";
+    @DeleteMapping("/{id}")
+    public void deleteById(@PathVariable Long id) {
+        categoryService.deleteById(id);
     }
-
     @PostMapping("")
-    public String PostProductcategory(){
-        return "Hier wird ein neue Produktkategory erstelt";
+    public CategoryEntities create(@RequestBody CategoryEntities category) {
+        return categoryService.create(category);
     }
+
+
+
 
     @GetMapping("")
-    public String getProductscategorycategory(){ return "hier währen meine producktkategoryen ";
+    public List<CategoryEntities> get() {
+        return categoryService.get();
     }
 
 }
+
+

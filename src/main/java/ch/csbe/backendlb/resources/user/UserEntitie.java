@@ -28,6 +28,9 @@ public class UserEntitie {
     @Column(columnDefinition = "date",nullable = false)
     private String birthday;
 
+    @Column(columnDefinition = "boolean",nullable = false)
+    private Boolean authenticated;
+
     public Long getId() {
         return id;
     }
@@ -82,4 +85,11 @@ public class UserEntitie {
         this.birthday = birthday;
     }
 
+    public Boolean getAuthenticated() {
+        return authenticated;
+    }
+
+    public void setAuthenticated(Boolean authenticated) {
+        this.authenticated = authenticated;
+    }
 }

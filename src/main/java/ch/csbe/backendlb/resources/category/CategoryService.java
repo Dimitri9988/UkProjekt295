@@ -23,8 +23,8 @@ public class CategoryService {
         return categoryRepository.findById(id).orElseThrow();
     }
 
-    public CategoryEntities create(CategoryEntities product) {
-        return categoryRepository.save(product);
+    public CategoryEntities create(CategoryEntities category) {
+        return categoryRepository.save(category);
     }
 
     public CategoryEntities update(Long id, CategoryEntities category) {
@@ -33,7 +33,6 @@ public class CategoryService {
             CategoryEntities existingCategory = categoryOptional.get();
             existingCategory.setName(category.getName());
             existingCategory.setActive(category.getActive());
-            existingCategory.setId(category.getId());
             return categoryRepository.save(existingCategory);
         }
         return new CategoryEntities();

@@ -22,21 +22,23 @@ public class UserService {
         return userRepository.findById(id).orElseThrow();
     }
 
-    public UserEntitie create(UserEntitie product) {
-        return userRepository.save(product);
+    public UserEntitie create(UserEntitie user) {
+        return userRepository.save(user);
     }
+
+
 
     public UserEntitie update(Long id, UserEntitie user) {
         Optional<UserEntitie> userOptional = userRepository.findById(id);
         if (userOptional.isPresent()) {
             UserEntitie existingUser = userOptional.get();
-            existingUser.setId(user.getId());
             existingUser.setFirstName(user.getFirstName());
             existingUser.setLastName(user.getLastName());
             existingUser.setUsername(user.getUsername());
             existingUser.setEmail(user.getEmail());
             existingUser.setPassword(user.getPassword());
             existingUser.setBirthday(user.getBirthday());
+            existingUser.setAuthenticated(user.getAuthenticated());
             return userRepository.save(existingUser);
         }
         return new UserEntitie();

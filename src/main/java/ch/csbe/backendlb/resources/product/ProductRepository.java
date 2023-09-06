@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface ProductRepository extends JpaRepository<ProductEntitie, Long> {
 
-
+    @Query
 
     List<ProductEntitie> findProductEntitiesByName(String name);
 
