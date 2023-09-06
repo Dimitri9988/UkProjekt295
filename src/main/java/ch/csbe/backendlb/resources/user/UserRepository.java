@@ -1,5 +1,6 @@
 package ch.csbe.backendlb.resources.user;
 
+import ch.csbe.backendlb.resources.product.ProductEntitie;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -12,7 +13,7 @@ public interface UserRepository extends JpaRepository<UserEntitie, Long> {
 
     //UserEntitie saveUserEntitieById(Long id);
 
-    //UserEntitie findUserEntitieById(Long id);
+    UserEntitie findUserEntitieById(Long id);
 
     //UserEntitie deleteUserEntitieById(Long id);
 

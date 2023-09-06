@@ -26,8 +26,6 @@ public class UserService {
         return userRepository.save(user);
     }
 
-
-
     public UserEntitie update(Long id, UserEntitie user) {
         Optional<UserEntitie> userOptional = userRepository.findById(id);
         if (userOptional.isPresent()) {

@@ -13,7 +13,7 @@ public class CategoryEntities {
     private Long id;
 
     @Column(columnDefinition = ("tinyint"),nullable = false)
-    private String active;
+    private int active;
 
     @Column(columnDefinition = ("varchar(255)"),nullable = false)
     private String name;
@@ -30,11 +30,11 @@ public class CategoryEntities {
         this.id = id;
     }
 
-    public String getActive() {
+    public int getActive() {
         return active;
     }
 
-    public void setActive(String active) {
+    public void setActive(int active) {
         this.active = active;
     }
 

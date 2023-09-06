@@ -13,6 +13,7 @@ public class RegisterController {
 
     @PostMapping("")
     public UserEntitie create(@RequestBody UserEntitie user) {
+
         return userService.create(user);
     }
 

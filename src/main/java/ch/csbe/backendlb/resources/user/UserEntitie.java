@@ -1,6 +1,11 @@
 package ch.csbe.backendlb.resources.user;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.time.OffsetDateTime;
+import java.util.Date;
 
 @Entity
 public class UserEntitie {
@@ -26,7 +31,7 @@ public class UserEntitie {
     private String password;
 
     @Column(columnDefinition = "date",nullable = false)
-    private String birthday;
+    private Date birthday;
 
     @Column(columnDefinition = "boolean",nullable = false)
     private Boolean authenticated;
@@ -77,11 +82,11 @@ public class UserEntitie {
         this.password = password;
     }
 
-    public String getBirthday() {
+    public Date getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(String birthday) {
+    public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
 

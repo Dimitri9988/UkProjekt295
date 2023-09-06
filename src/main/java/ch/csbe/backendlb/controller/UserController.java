@@ -2,6 +2,8 @@ package ch.csbe.backendlb.controller;
 
 import ch.csbe.backendlb.resources.product.ProductEntitie;
 import ch.csbe.backendlb.resources.product.ProductService;
+import ch.csbe.backendlb.resources.user.UserEntitie;
+import ch.csbe.backendlb.resources.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,10 +11,11 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("user")
 public class UserController {
 
-    @Autowired ProductService userService;
+    @Autowired
+    UserService userService;
 
-    @GetMapping("/{id}")
-    public ProductEntitie getById(@PathVariable Long id) {
+    @GetMapping("{id}")
+    public UserEntitie getById(@PathVariable("id") Long id) {
         return userService.getById(id);
     }
 
