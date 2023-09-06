@@ -1,5 +1,6 @@
 package ch.csbe.backendlb.resources.product;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -8,11 +9,10 @@ import java.util.Optional;
 @Service
 public class ProductService {
 
+    @Autowired
     private ProductRepository productRepository;
 
-    public List<ProductEntitie> ProductRepository(ProductRepository productRepository) {
-        this.productRepository = productRepository;
-    }
+
 
     public List<ProductEntitie> get() {
         return productRepository.findAll();
@@ -32,8 +32,14 @@ public class ProductService {
             ProductEntitie existingProduct = productOptional.get();
             existingProduct.setName(product.getName());
             existingProduct.setActive(product.getActive());
-            existingProduct.setId(product.getId());
+            existingProduct.setSku(product.getSku());
+            existingProduct.setImages(product.getImages());
+            existingProduct.setDescription(product.getDescription());
+            existingProduct.setPrise(product.getPrise());
+            existingProduct.setStock(product.getStock());
+            return productRepository.save(existingProduct);
         }
+        return new ProductEntitie();
     }
 
     public void deleteById(Long id) {

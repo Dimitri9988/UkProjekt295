@@ -102,11 +102,5 @@ public class ProductEntitie {
         this.stock = stock;
     }
 
-    public ch.csbe.backendlb.resources.category.CategoryEntities getCategoryEntities() {
-        return CategoryEntities;
-    }
 
-    public void setCategoryEntities(ch.csbe.backendlb.resources.category.CategoryEntities categoryEntities) {
-        CategoryEntities = categoryEntities;
-    }
 }

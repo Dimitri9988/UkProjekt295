@@ -14,17 +14,18 @@ public class Producktcontroller {
 
     @Autowired ProductService productService;
 
-    @GetMapping("{id}")
-    public String getProductByid(@PathVariable String id){
-        return "hier währe mein produckt mit der id = " + id;
+    @GetMapping("/{id}")
+    public ProductEntitie getById(@PathVariable Long id) {
+        return productService.getById(id);
     }
 
-    @PutMapping("{id}")
-    public String putProductByid(@PathVariable String id) { return "hier währe mein aktualisirtes produckt mit der id = " + id;
+    @PutMapping("/{id}")
+    public ProductEntitie update(@RequestBody ProductEntitie product,@PathVariable Long id) {
+        return  productService.update(id, product );
     }
 
-    @DeleteMapping("{id}")
-    public void deleteById(@RequestBody Long id) {
+    @DeleteMapping("/{id}")
+    public void deleteById(@PathVariable Long id) {
         productService.deleteById(id);
     }
 

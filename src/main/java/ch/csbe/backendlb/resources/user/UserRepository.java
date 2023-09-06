@@ -8,7 +8,7 @@ import java.util.List;
 @Repository
 public interface UserRepository extends JpaRepository<UserEntitie, Long> {
 
-    UserEntitie updateUserEntitieById(Long id);
+    //UserEntitie updateUserEntitieById(Long id);
 
     //UserEntitie saveUserEntitieById(Long id);
 

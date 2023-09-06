@@ -3,7 +3,7 @@ package ch.csbe.backendlb.controller;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("productscategory")
+@RequestMapping("/productscategory")
 public class productscategoryController {
 
     @GetMapping("{id}")
