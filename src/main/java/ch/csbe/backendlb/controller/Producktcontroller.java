@@ -2,6 +2,7 @@ package ch.csbe.backendlb.controller;
 
 import ch.csbe.backendlb.resources.product.ProductEntitie;
 import ch.csbe.backendlb.resources.product.ProductService;
+import ch.csbe.backendlb.resources.product.productdto.ProductDetailDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureOrder;
 import org.springframework.web.bind.annotation.*;
@@ -15,13 +16,13 @@ public class Producktcontroller {
     @Autowired ProductService productService;
 
     @GetMapping("/{id}")
-    public ProductEntitie getById(@PathVariable Long id) {
+    public ProductDetailDto getById(@PathVariable Long id) {
         return productService.getById(id);
     }
 
     @PutMapping("/{id}")
-    public ProductEntitie update(@RequestBody ProductEntitie product,@PathVariable Long id) {
-        return  productService.update(id, product );
+    public ProductDetailDto update(@RequestBody ProductEntitie product,@PathVariable Long id) {
+        return  productService.update(id, product);
     }
 
     @DeleteMapping("/{id}")
@@ -30,12 +31,12 @@ public class Producktcontroller {
     }
 
     @PostMapping("")
-    public ProductEntitie create(@RequestBody ProductEntitie product) {
+    public ProductDetailDto create(@RequestBody ProductEntitie product) {
         return productService.create(product);
     }
 
     @GetMapping("")
-    public List<ProductEntitie> get() {
+    public List<ProductDetailDto> get() {
         return productService.get();
     }
 

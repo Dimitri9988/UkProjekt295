@@ -1,5 +1,7 @@
 package ch.csbe.backendlb.resources.product;
 
+import ch.csbe.backendlb.resources.product.productdto.ProductDetailDto;
+import ch.csbe.backendlb.resources.product.productdto.ProductMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +12,21 @@ import java.util.Optional;
 public class ProductService {
 
     @Autowired
-    private ProductRepository productRepository;
+    ProductMapper productMapper;
+    @Autowired
+    ProductRepository productRepository;
+
+
+    public ProductDetailDto getById(Long id) {
+
+        ProductEntitie porductEntitie = this.productRepository.getById(id);
+
+        ProductDetailDto productDetailDto = productMapper.toDetailDto(porductEntitie);
+            return productDetailDto;
+    }
+
+
+
 
 
 
@@ -18,9 +34,7 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-    public ProductEntitie getById(Long id) {
-        return productRepository.findById(id).orElseThrow();
-    }
+
 
     public ProductEntitie create(ProductEntitie product) {
 
