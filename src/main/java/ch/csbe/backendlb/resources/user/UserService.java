@@ -1,6 +1,10 @@
 package ch.csbe.backendlb.resources.user;
 
-import ch.csbe.backendlb.resources.product.ProductEntitie;
+import ch.csbe.backendlb.resources.product.productdto.ProductCreateDto;
+import ch.csbe.backendlb.resources.product.productdto.ProductDetailDto;
+import ch.csbe.backendlb.resources.user.userdto.UserCreateDto;
+import ch.csbe.backendlb.resources.user.userdto.UserDetailDto;
+import ch.csbe.backendlb.resources.user.userdto.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +14,10 @@ import java.util.Optional;
 @Service
 public class UserService {
     @Autowired
-    private UserRepository userRepository;
+    UserRepository userRepository;
+    @Autowired
+    UserMapper userMapper;
+
 
 
 
@@ -18,13 +25,19 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public UserEntitie getById(Long id) {
-        return userRepository.findById(id).orElseThrow();
+    public UserDetailDto getById(Long id) {
+
+        UserEntitie userEntitie = this.userRepository.getById(id);
+        UserDetailDto userDetailDto = userMapper.toDetailDto(userEntitie);
+
+        return userDetailDto;
     }
 
-    public UserEntitie create(UserEntitie user) {
-        return userRepository.save(user);
+    public UserDetailDto create(UserCreateDto user) {
+        return userMapper.toDetailDto(userRepository.save(userMapper.toEntity(user))) ;
     }
+
+
 
     public UserEntitie update(Long id, UserEntitie user) {
         Optional<UserEntitie> userOptional = userRepository.findById(id);

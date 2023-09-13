@@ -2,6 +2,10 @@ package ch.csbe.backendlb.controller;
 
 import ch.csbe.backendlb.resources.category.CategoryEntities;
 import ch.csbe.backendlb.resources.category.CategoryService;
+import ch.csbe.backendlb.resources.category.categorydto.CategoryCreateDto;
+import ch.csbe.backendlb.resources.category.categorydto.CategoryDetailDto;
+import ch.csbe.backendlb.resources.category.categorydto.CategoryMapper;
+import ch.csbe.backendlb.resources.category.categorydto.CategoryUpdateDto;
 import ch.csbe.backendlb.resources.product.ProductEntitie;
 import ch.csbe.backendlb.resources.product.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +19,11 @@ public class productscategoryController {
 
     @Autowired CategoryService categoryService;
 
+    @Autowired
+    CategoryMapper categoryMapper;
+
     @GetMapping("/{id}")
-    public CategoryEntities getById(@PathVariable Long id) {
-        return categoryService.getById(id);
-    }
+    public CategoryDetailDto getById(@PathVariable Long id) {return categoryService.getById(id); }
 
 
 
@@ -33,7 +38,7 @@ public class productscategoryController {
 
 
     @PutMapping("/{id}")
-    public CategoryEntities update(@RequestBody CategoryEntities category,@PathVariable Long id) {
+    public CategoryDetailDto update(@RequestBody CategoryUpdateDto category, @PathVariable Long id) {
         return  categoryService.update(id, category );
     }
 
@@ -41,8 +46,9 @@ public class productscategoryController {
     public void deleteById(@PathVariable Long id) {
         categoryService.deleteById(id);
     }
+
     @PostMapping("")
-    public CategoryEntities create(@RequestBody CategoryEntities category) {
+    public CategoryDetailDto create(@RequestBody CategoryCreateDto category) {
         return categoryService.create(category);
     }
 
@@ -50,7 +56,7 @@ public class productscategoryController {
 
 
     @GetMapping("")
-    public List<CategoryEntities> get() {
+    public List<CategoryDetailDto> get() {
         return categoryService.get();
     }
 

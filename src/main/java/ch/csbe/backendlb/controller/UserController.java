@@ -4,6 +4,8 @@ import ch.csbe.backendlb.resources.product.ProductEntitie;
 import ch.csbe.backendlb.resources.product.ProductService;
 import ch.csbe.backendlb.resources.user.UserEntitie;
 import ch.csbe.backendlb.resources.user.UserService;
+import ch.csbe.backendlb.resources.user.userdto.UserDetailDto;
+import ch.csbe.backendlb.resources.user.userdto.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,8 +16,11 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    UserMapper userMapper;
+
     @GetMapping("{id}")
-    public UserEntitie getById(@PathVariable("id") Long id) {
+    public UserDetailDto getById(@PathVariable Long id) {
         return userService.getById(id);
     }
 

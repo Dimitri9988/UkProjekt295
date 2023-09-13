@@ -1,5 +1,6 @@
 package ch.csbe.backendlb.resources.product.productdto;
 
+import ch.csbe.backendlb.resources.category.categorydto.CategoryShowDto;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 @Data
@@ -20,6 +21,6 @@ public class ProductDetailDto {
     public Double prise;
     @NotNull
     public String stock;
-    //@NotNull
-    //public CategoryShowDto toDos;
+    @NotNull
+    public CategoryShowDto toDos;
 }

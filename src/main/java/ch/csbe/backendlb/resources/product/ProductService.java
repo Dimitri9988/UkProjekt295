@@ -1,12 +1,15 @@
 package ch.csbe.backendlb.resources.product;
 
+import ch.csbe.backendlb.resources.product.productdto.ProductCreateDto;
 import ch.csbe.backendlb.resources.product.productdto.ProductDetailDto;
 import ch.csbe.backendlb.resources.product.productdto.ProductMapper;
+import ch.csbe.backendlb.resources.product.productdto.ProductUpdateDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ProductService {
@@ -30,18 +33,18 @@ public class ProductService {
 
 
 
-    public List<ProductEntitie> get() {
-        return productRepository.findAll();
+    public List<ProductDetailDto> get() {
+        return  productRepository.findAll().stream().map(productMapper::toDetailDto).collect(Collectors.toList());
     }
 
 
 
-    public ProductEntitie create(ProductEntitie product) {
+    public ProductDetailDto create(ProductCreateDto product) {
 
-        return productRepository.save(product);
+        return productMapper.toDetailDto(productRepository.save(productMapper.toEntity(product))) ;
     }
 
-    public ProductEntitie update(Long id, ProductEntitie product) {
+    public ProductDetailDto update(Long id, ProductUpdateDto product) {
         Optional<ProductEntitie> productOptional = productRepository.findById(id);
         if (productOptional.isPresent()) {
             ProductEntitie existingProduct = productOptional.get();
@@ -52,9 +55,9 @@ public class ProductService {
             existingProduct.setDescription(product.getDescription());
             existingProduct.setPrise(product.getPrise());
             existingProduct.setStock(product.getStock());
-            return productRepository.save(existingProduct);
+            return productMapper.toDetailDto(productRepository.save(existingProduct));
         }
-        return new ProductEntitie();
+        return new ProductDetailDto();
     }
 
     public void deleteById(Long id) {
