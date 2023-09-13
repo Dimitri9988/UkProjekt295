@@ -8,12 +8,17 @@ import ch.csbe.backendlb.resources.category.categorydto.CategoryMapper;
 import ch.csbe.backendlb.resources.category.categorydto.CategoryUpdateDto;
 import ch.csbe.backendlb.resources.product.ProductEntitie;
 import ch.csbe.backendlb.resources.product.ProductService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.persistence.Table;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@Tag(name = "CategoryController", description = "Controller für Kategorien")
 @RequestMapping("/productscategory")
 public class productscategoryController {
 
@@ -29,8 +34,13 @@ public class productscategoryController {
 
 
     @GetMapping("{id}/products")
-    public String getProductcategoryProductsByid(@PathVariable String id){
-        return "hier währe meine producktkategory mit der id und passende Produkte= " + id;
+    @Operation(summary = "gibt alle Produkte einer gewissen Kategory aus", operationId = "getCategoryProducts", description = "es werden alle Produkte ausgegeben welche in der angegebenen Kategory sind")
+
+    public List<CategoryDetailDto> CategoryShowDto(@PathVariable String name){
+
+            return categoryService.get();
+
+
     }
 
 
@@ -38,7 +48,8 @@ public class productscategoryController {
 
 
     @PutMapping("/{id}")
-    public CategoryDetailDto update(@RequestBody CategoryUpdateDto category, @PathVariable Long id) {
+    @Operation(summary = "aktualisirt eine Kategory mit einer bestimmten Id", operationId = "getCategoryById", description = "aktualisirt eine Kategory anhand einer Id")
+    public CategoryDetailDto update(@io.swagger.v3.oas.annotations.parameters.RequestBody(description = "Das ist ein Objekt mit neuen werten welche aktualisirt werden sollen") @RequestBody CategoryUpdateDto category, @Parameter(description = "Die Kategory(id) die aktualisirt werden soll") @PathVariable Long id) {
         return  categoryService.update(id, category );
     }
 
