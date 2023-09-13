@@ -5,7 +5,9 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class UserEntitie {
@@ -97,4 +99,12 @@ public class UserEntitie {
     public void setAuthenticated(Boolean authenticated) {
         this.authenticated = authenticated;
     }
+
+
+    public List<String> getRoles() {
+        List<String> hardcodedRoles = new ArrayList<>();
+        hardcodedRoles.add("ROLE_ADMIN");
+        return hardcodedRoles;
+    }
+
 }
