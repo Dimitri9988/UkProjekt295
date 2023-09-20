@@ -102,9 +102,12 @@ public class UserEntitie {
 
 
     public List<String> getRoles() {
-        List<String> hardcodedRoles = new ArrayList<>();
-        hardcodedRoles.add("ROLE_ADMIN");
-        return hardcodedRoles;
+        List<String> Roles = new ArrayList<>();
+        if (this.authenticated.equals(true)){
+            Roles.add("ROLE_ADMIN");
+        }
+
+        return Roles;
     }
 
 }

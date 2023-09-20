@@ -1,10 +1,7 @@
 package ch.csbe.backendlb.resources.user;
 
 import ch.csbe.backendlb.resources.login.LoginRequestDto;
-import ch.csbe.backendlb.resources.user.userdto.UserCreateDto;
-import ch.csbe.backendlb.resources.user.userdto.UserDetailDto;
-import ch.csbe.backendlb.resources.user.userdto.UserMapper;
-import ch.csbe.backendlb.resources.user.userdto.UserShowDto;
+import ch.csbe.backendlb.resources.user.userdto.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -40,20 +37,15 @@ public class UserService {
 
 
 
-    public UserEntitie update(Long id, UserEntitie user) {
+    public UserDetailDto update(Long id, UserUpdateDto user) {
         Optional<UserEntitie> userOptional = userRepository.findById(id);
         if (userOptional.isPresent()) {
             UserEntitie existingUser = userOptional.get();
-            existingUser.setFirstName(user.getFirstName());
-            existingUser.setLastName(user.getLastName());
-            existingUser.setUsername(user.getUsername());
-            existingUser.setEmail(user.getEmail());
-            existingUser.setPassword(user.getPassword());
-            existingUser.setBirthday(user.getBirthday());
-            existingUser.setAuthenticated(user.getAuthenticated());
-            return userRepository.save(existingUser);
+            userMapper.update(user, existingUser);
+
+            return userMapper.toDetailDto(userRepository.save(existingUser));
         }
-        return new UserEntitie();
+        return userMapper.toDetailDto(new UserEntitie());
     }
 
     public void deleteById(Long id) {

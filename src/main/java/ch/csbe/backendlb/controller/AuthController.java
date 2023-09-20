@@ -31,8 +31,6 @@ public class AuthController {
             tokenWrapper.setToken(token);
             return tokenWrapper;
         } else {
-            // Errorhandling.
-            // Either return 401 or 400
             return null;
         }
 

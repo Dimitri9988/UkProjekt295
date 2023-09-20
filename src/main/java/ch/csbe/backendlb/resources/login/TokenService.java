@@ -9,7 +9,6 @@ import java.util.Date;
 
 @Service
 public class TokenService {
-    // PLEASE USE A MORE SECURE KEY :-)
     private final String SECRET_KEY = "yourMoreSecretKey";
     public String generateToken(UserEntitie user) {
         return Jwts.builder()

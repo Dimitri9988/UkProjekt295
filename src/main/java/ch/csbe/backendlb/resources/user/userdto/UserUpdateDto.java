@@ -14,8 +14,6 @@ import java.util.Date;
 
 @Schema(description = "DTOs für das updaten eines Benutzers")
 public class UserUpdateDto {
-    @Schema(description = "Einmaliege Id des Benutzers")
-    public Long id;
     @Schema(description = "Vorname des Benutzers")
     public String firstName;
     @Schema(description = "Nachname des Benutzers")

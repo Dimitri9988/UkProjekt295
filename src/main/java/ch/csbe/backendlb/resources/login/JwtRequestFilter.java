@@ -21,7 +21,7 @@ import java.io.IOException;
     @Autowired
     private UserService userService;
 
-    private final String SECRET_KEY = "yourSecretKey";
+    private final String SECRET_KEY = "yourMoreSecretKey";
 
     @Override
     protected void doFilterInternal(
