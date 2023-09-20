@@ -34,6 +34,8 @@ public class productscategoryController {
 
     public List<ProductDetailDto> get(@PathVariable String name){
         return (List<ProductDetailDto>) categoryService.getByName(name);
+
+
     }
 
 
