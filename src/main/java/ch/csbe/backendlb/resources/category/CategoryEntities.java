@@ -22,6 +22,14 @@ public class CategoryEntities {
     private List<ProductEntitie> ProductEntitie;
 
 
+    public List<ch.csbe.backendlb.resources.product.ProductEntitie> getProductEntitie() {
+        return ProductEntitie;
+    }
+
+    public void setProductEntitie(List<ch.csbe.backendlb.resources.product.ProductEntitie> productEntitie) {
+        ProductEntitie = productEntitie;
+    }
+
     public Long getId() {
         return id;
     }

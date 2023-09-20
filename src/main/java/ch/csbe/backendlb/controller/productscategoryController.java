@@ -2,12 +2,10 @@ package ch.csbe.backendlb.controller;
 
 import ch.csbe.backendlb.resources.category.CategoryEntities;
 import ch.csbe.backendlb.resources.category.CategoryService;
-import ch.csbe.backendlb.resources.category.categorydto.CategoryCreateDto;
-import ch.csbe.backendlb.resources.category.categorydto.CategoryDetailDto;
-import ch.csbe.backendlb.resources.category.categorydto.CategoryMapper;
-import ch.csbe.backendlb.resources.category.categorydto.CategoryUpdateDto;
+import ch.csbe.backendlb.resources.category.categorydto.*;
 import ch.csbe.backendlb.resources.product.ProductEntitie;
 import ch.csbe.backendlb.resources.product.ProductService;
+import ch.csbe.backendlb.resources.product.productdto.ProductDetailDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -19,7 +17,7 @@ import java.util.List;
 
 @RestController
 @Tag(name = "CategoryController", description = "Controller für Kategorien")
-@RequestMapping("/productscategory")
+@RequestMapping("/productscategories")
 public class productscategoryController {
 
     @Autowired CategoryService categoryService;
@@ -31,17 +29,14 @@ public class productscategoryController {
     public CategoryDetailDto getById(@PathVariable Long id) {return categoryService.getById(id); }
 
 
-
-
-    @GetMapping("{id}/products")
+    @GetMapping("{name}/products")
     @Operation(summary = "gibt alle Produkte einer gewissen Kategory aus", operationId = "getCategoryProducts", description = "es werden alle Produkte ausgegeben welche in der angegebenen Kategory sind")
 
-    public List<CategoryDetailDto> CategoryShowDto(@PathVariable String name){
-
-            return categoryService.get();
-
-
+    public List<ProductDetailDto> get(@PathVariable String name){
+        return (List<ProductDetailDto>) categoryService.getByName(name);
     }
+
+
 
 
 

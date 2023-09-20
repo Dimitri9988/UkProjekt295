@@ -33,6 +33,15 @@ public class CategoryService {
         return categoryDetailDto;
     }
 
+    public CategoryDetailDto getByName(String name) {
+        CategoryEntities categoryEntities = this.categoryRepository.findCategoryEntitiesByName(name);
+
+        CategoryDetailDto categoryDetailDto = categoryMapper.toDetailDto(categoryEntities);
+        return categoryDetailDto;
+    }
+
+
+
     public CategoryDetailDto create(CategoryCreateDto category) {
         return categoryMapper.toDetailDto(categoryRepository.save(categoryMapper.toEntity(category))) ;
     }

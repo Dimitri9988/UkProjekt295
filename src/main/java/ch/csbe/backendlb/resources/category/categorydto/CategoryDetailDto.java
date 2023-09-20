@@ -19,6 +19,7 @@ public class CategoryDetailDto {
     public String name;
     @NotNull
     @Schema (description = "Produkte einer Kategory")
-    private ProductShowDto toDos;
+    private ProductShowDto product;
 }
+
 

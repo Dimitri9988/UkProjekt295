@@ -16,11 +16,7 @@ public interface ProductRepository extends JpaRepository<ProductEntitie, Long> {
 
     List<ProductEntitie> findProductEntitiesByName(String name);
 
-    //List<ProductEntitie> saveProductEntitiesByName(String name);
 
-    //List<ProductEntitie> updateProductEntitiesByName(String name);
-
-    //List<ProductEntitie> deleteProductEntitiesByName(String name);
 
 
     ProductEntitie findProductEntitieById(Long id);

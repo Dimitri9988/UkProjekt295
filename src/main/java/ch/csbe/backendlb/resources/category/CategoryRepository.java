@@ -11,20 +11,10 @@ import java.util.List;
 @RepositoryRestResource(exported = false)
 public interface CategoryRepository extends JpaRepository<CategoryEntities, Long> {
 
-    //CategoryEntities updateCategoryEntitiesById(Long id);
-
-    //CategoryEntities saveCategoryEntitiesById(Long id);
+    CategoryEntities findCategoryEntitiesByName(String name);
 
     CategoryEntities findCategoryEntitiesById(Long id);
 
-    //CategoryEntities deleteCategoryEntitiesById(Long id);
 
-    List<CategoryEntities> findCategoryEntitiesByName(String name);
-
-    //List<CategoryEntities> saveCategoryEntitiessByName(String name);
-
-    //List<CategoryEntities> updateCategoryEntitiessByName(String name);
-
-    //List<CategoryEntities> deleteCategoryEntitiessByName(String name);
 
 }
