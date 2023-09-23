@@ -1,6 +1,6 @@
 package ch.csbe.backendlb;
 
-import ch.csbe.backendlb.resources.product.productdto.ProductMapper;
+import ch.csbe.backendlb.resource.product.productdto.ProductMapper;
 import org.mapstruct.factory.Mappers;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,10 +13,12 @@ public class BackendLbApplication {
 
     ProductMapper productMapper;
 
+    // Hauptmetode welche die Applikation Started
     public static void main(String[] args) {
         SpringApplication.run(BackendLbApplication.class, args);
     }
 
+    // Konfiguriert die Product Mapper
     @Bean
     @Primary
     public ProductMapper productMapper() {
