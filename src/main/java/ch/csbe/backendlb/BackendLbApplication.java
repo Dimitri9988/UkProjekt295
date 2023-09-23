@@ -22,7 +22,7 @@ public class BackendLbApplication {
     @Bean
     @Primary
     public ProductMapper productMapper() {
-        if(productMapper == null) {
+        if (productMapper == null) {
             productMapper = Mappers.getMapper(ProductMapper.class);
         }
         return productMapper;

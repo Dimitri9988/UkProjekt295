@@ -18,14 +18,15 @@ import java.util.List;
 @Tag(name = "CategoryController", description = "Controller für Kategorien")
 @RequestMapping("/productscategories")
 public class ProductCategoryController {
-
     @Autowired
     CategoryService categoryService;
 
     @Autowired
     CategoryMapper categoryMapper;
 
+
     // Verarbeitet Get Anfrage und gibt Infos zu einer Kategorie zurück anhand einer Id
+
     @GetMapping("{id}")
     public CategoryDetailDto getById(@PathVariable Long id) {
         return categoryService.getById(id);
