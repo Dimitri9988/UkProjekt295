@@ -13,21 +13,21 @@ import lombok.Setter;
 public class ProductUpdateDto {
     @Schema(description = "einmalige Id eines Produktes zum identifiziren")
     public Long id;
-    @Schema(description = "sku eines Produktes")
+    @Schema (description = "sku eines Produktes")
     public String sku;
-    @Schema(description = "aktivitäts status eines Produktes")
-    public String active;
-    @Schema(description = "Name eines Produktes")
+    @Schema (description = "aktivitäts status eines Produktes")
+    public  String active;
+    @Schema (description = "Name eines Produktes")
     public String name;
-    @Schema(description = "Das Bild zu einem Produkt")
+    @Schema (description = "Das Bild zu einem Produkt")
     public String images;
-    @Schema(description = "BEschreibung eines Produktes")
+    @Schema (description = "BEschreibung eines Produktes")
     public String description;
-    @Schema(description = "Preis eines Produktes")
+    @Schema (description = "Preis eines Produktes")
     public Double prise;
-    @Schema(description = "Lagerbestand eines Produktes")
+    @Schema (description = "Lagerbestand eines Produktes")
     public String stock;
-    @Schema(description = "Kategory eines Produktes")
+    @Schema (description = "Kategory eines Produktes")
     private CategoryShowDto category_id;
 
 }
