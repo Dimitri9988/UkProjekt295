@@ -33,7 +33,6 @@ public class CategoryService {
         CategoryDetailDto categoryDetailDto = categoryMapper.toDetailDto(categoryEntities);
         return categoryDetailDto;
     }
-
     // Gibt ein CategoryDetailDto Objekt zurück anhand des Namens.
     public CategoryDetailDto getByName(String name) {
         CategoryEntities categoryEntities = this.categoryRepository.findCategoryEntitiesByName(name);
@@ -45,7 +44,7 @@ public class CategoryService {
 
     // Erstellt eine neue Kategorie und gibt das Neue CategoryDetailDto zurück.
     public CategoryDetailDto create(CategoryCreateDto category) {
-        return categoryMapper.toDetailDto(categoryRepository.save(categoryMapper.toEntity(category)));
+        return categoryMapper.toDetailDto(categoryRepository.save(categoryMapper.toEntity(category))) ;
     }
 
     // Aktualisiert eine Kategorie anhand ihrer Id und gibt das aktualisierte CategoryDetailDto zurück.
@@ -59,7 +58,6 @@ public class CategoryService {
         }
         return new CategoryDetailDto();
     }
-
     // Löscht eine Kategorie anhand ihrer ID.
     public void deleteById(Long id) {
         categoryRepository.deleteById(id);
@@ -67,5 +65,3 @@ public class CategoryService {
 
     }
 }
-
-
