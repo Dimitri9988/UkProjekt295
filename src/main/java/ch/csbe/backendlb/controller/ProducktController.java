@@ -1,23 +1,23 @@
 package ch.csbe.backendlb.controller;
 
-import ch.csbe.backendlb.resource.product.ProductService;
-import ch.csbe.backendlb.resource.product.productdto.ProductCreateDto;
-import ch.csbe.backendlb.resource.product.productdto.ProductDetailDto;
-import ch.csbe.backendlb.resource.product.productdto.ProductMapper;
-import ch.csbe.backendlb.resource.product.productdto.ProductUpdateDto;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+        import ch.csbe.backendlb.resource.product.ProductService;
+        import ch.csbe.backendlb.resource.product.productdto.ProductCreateDto;
+        import ch.csbe.backendlb.resource.product.productdto.ProductDetailDto;
+        import ch.csbe.backendlb.resource.product.productdto.ProductMapper;
+        import ch.csbe.backendlb.resource.product.productdto.ProductUpdateDto;
+        import org.springframework.beans.factory.annotation.Autowired;
+        import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+        import java.util.List;
 
 @RestController
-@RequestMapping("products")
+@RequestMapping("/products")
 public class ProducktController {
     @Autowired
-    ProductService productService;
+    private ProductService productService;
 
     @Autowired
-    ProductMapper productMapper;
+    private ProductMapper productMapper;
 
     //Verarbeitet Get Anfrage und gibt Liste von Produkten zurück.
     @GetMapping("")
@@ -32,13 +32,13 @@ public class ProducktController {
     }
 
     //Verarbeited Put Anfrage und aktualisirt ein Produckt anhand der Id
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
     public ProductDetailDto update(@RequestBody ProductUpdateDto product, @PathVariable Long id) {
         return productService.update(id, product);
     }
 
     //Verarbeited Delet Anfrage und Löscht Produkt anhand der Id
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public void deleteById(@PathVariable Long id) {
         productService.deleteById(id);
     }
