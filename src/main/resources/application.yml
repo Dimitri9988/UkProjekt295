@@ -9,8 +9,3 @@ spring:
     hibernate:
       ddl-auto: none
     show-sql: true
-flyway:
-  url: jdbc:mariadb://localhost:3306/product-manager
-  schemas: product-manger
-  user: "root"
-  password:

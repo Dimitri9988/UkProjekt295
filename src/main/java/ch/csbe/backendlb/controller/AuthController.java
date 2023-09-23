@@ -1,51 +1,48 @@
 package ch.csbe.backendlb.controller;
 
-        import ch.csbe.backendlb.resource.product.ProductService;
-        import ch.csbe.backendlb.resource.product.productdto.ProductCreateDto;
-        import ch.csbe.backendlb.resource.product.productdto.ProductDetailDto;
-        import ch.csbe.backendlb.resource.product.productdto.ProductMapper;
-        import ch.csbe.backendlb.resource.product.productdto.ProductUpdateDto;
-        import org.springframework.beans.factory.annotation.Autowired;
-        import org.springframework.web.bind.annotation.*;
-
-        import java.util.List;
+import ch.csbe.backendlb.resource.login_regist.LoginRequestDto;
+import ch.csbe.backendlb.resource.login_regist.TokenService;
+import ch.csbe.backendlb.resource.login_regist.TokenWrapper;
+import ch.csbe.backendlb.resource.user.UserEntitie;
+import ch.csbe.backendlb.resource.user.UserService;
+import ch.csbe.backendlb.resource.user.userdto.UserCreateDto;
+import ch.csbe.backendlb.resource.user.userdto.UserShowDto;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/products")
-public class ProducktController {
+@RequestMapping("/authenticate")
+public class AuthController {
     @Autowired
-    private ProductService productService;
+    private UserService userService;
 
     @Autowired
-    private ProductMapper productMapper;
+    private TokenService tokenService;
 
-    //Verarbeitet Get Anfrage und gibt Liste von Produkten zurück.
-    @GetMapping("")
-    public List<ProductDetailDto> get() {
-        return productService.get();
+    // Hier wird Post anfrage verarbeitet.
+    @PostMapping("login")
+    public TokenWrapper login(@RequestBody LoginRequestDto loginRequestDto) {
+        // fiendet mit anmeldeinfos den Benutzer
+        UserEntitie user = userService.getUserWithCredentials(loginRequestDto);
+
+        if (user != null) {
+            // Wen Benutzer gefunden ist gib ein Token zurück.
+            TokenWrapper tokenWrapper = new TokenWrapper();
+            String token = tokenService.generateToken(user);
+            tokenWrapper.setToken(token);
+            return tokenWrapper;
+        } else {
+            //Wenn keiner gefunden wird, gibt Null zurück.
+            return null;
+        }
     }
 
-    //Verarbeited Get Anfrage Gibt Produkt zurück mit der passenden Id
-    @GetMapping("/{id}")
-    public ProductDetailDto getById(@PathVariable Long id) {
-        return productService.getById(id);
-    }
-
-    //Verarbeited Put Anfrage und aktualisirt ein Produckt anhand der Id
-    @PutMapping("/{id}")
-    public ProductDetailDto update(@RequestBody ProductUpdateDto product, @PathVariable Long id) {
-        return productService.update(id, product);
-    }
-
-    //Verarbeited Delet Anfrage und Löscht Produkt anhand der Id
-    @DeleteMapping("/{id}")
-    public void deleteById(@PathVariable Long id) {
-        productService.deleteById(id);
-    }
-
-    // Verarbeited Psot Anfrage und erstelt Produkt
-    @PostMapping("")
-    public ProductDetailDto create(@RequestBody ProductCreateDto product) {
-        return productService.create(product);
+    // Regisrirt Benutzer und gibt ihn zurück.
+    @PostMapping("register")
+    public UserShowDto register(@RequestBody UserCreateDto userCreateDto) {
+        return userService.register(userCreateDto);
     }
 }
