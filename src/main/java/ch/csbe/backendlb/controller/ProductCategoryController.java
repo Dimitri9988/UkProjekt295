@@ -1,4 +1,5 @@
 package ch.csbe.backendlb.controller;
+
 import ch.csbe.backendlb.resource.category.CategoryService;
 import ch.csbe.backendlb.resource.category.categorydto.CategoryCreateDto;
 import ch.csbe.backendlb.resource.category.categorydto.CategoryDetailDto;
@@ -22,6 +23,7 @@ public class ProductCategoryController {
 
     @Autowired
     CategoryMapper categoryMapper;
+
     // Verarbeited Get Anfrage und gibt Infos zu einer Kategory zurück anhand einer Id
     @GetMapping("{id}")
     public CategoryDetailDto getById(@PathVariable Long id) {

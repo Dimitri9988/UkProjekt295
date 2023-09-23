@@ -14,29 +14,29 @@ import java.util.List;
 public class UserEntitie {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(columnDefinition = ("int"),nullable = false)
+    @Column(columnDefinition = ("int"), nullable = false)
     private Long id;
 
 
-    @Column(columnDefinition = "varchar(255)",nullable = false)
+    @Column(columnDefinition = "varchar(255)", nullable = false)
     private String firstName;
 
-    @Column(columnDefinition = "varchar(255)",nullable = false)
-    private  String lastName;
+    @Column(columnDefinition = "varchar(255)", nullable = false)
+    private String lastName;
 
-    @Column(columnDefinition = "varchar(255)",nullable = false)
+    @Column(columnDefinition = "varchar(255)", nullable = false)
     private String username;
 
-    @Column(columnDefinition = "varchar(255)",nullable = false)
+    @Column(columnDefinition = "varchar(255)", nullable = false)
     private String email;
 
-    @Column(columnDefinition = "varchar(255)",nullable = false)
+    @Column(columnDefinition = "varchar(255)", nullable = false)
     private String password;
 
-    @Column(columnDefinition = "date",nullable = false)
+    @Column(columnDefinition = "date", nullable = false)
     private Date birthday;
 
-    @Column(columnDefinition = "boolean",nullable = false)
+    @Column(columnDefinition = "boolean", nullable = false)
     private Boolean authenticated;
 
     //Getter und setter für die Felder von UserEntitit
@@ -48,7 +48,9 @@ public class UserEntitie {
         this.id = id;
     }
 
-    public String getFirstName() {return firstName;}
+    public String getFirstName() {
+        return firstName;
+    }
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
@@ -105,7 +107,7 @@ public class UserEntitie {
     // wen der Nutzer die Rolle Admin hat (authenticated) wird ihm die rolle "ROLE_ADMIN" hinzugefügt
     public List<String> getRoles() {
         List<String> Roles = new ArrayList<>();
-        if (this.authenticated.equals(true)){
+        if (this.authenticated.equals(true)) {
             Roles.add("ROLE_ADMIN");
         }
 

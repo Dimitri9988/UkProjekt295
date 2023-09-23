@@ -20,8 +20,4 @@ public interface ProductRepository extends JpaRepository<ProductEntitie, Long> {
     ProductEntitie findProductEntitieById(Long id);
 
 
-
-
-
-
 }
