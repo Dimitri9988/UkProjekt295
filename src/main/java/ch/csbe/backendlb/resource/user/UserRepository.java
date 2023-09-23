@@ -22,5 +22,4 @@ public interface UserRepository extends JpaRepository<UserEntitie, Long> {
 
     // Sucht anhand des vornamens Ensprechende Benutzer
     List<UserEntitie> findUserEntitiesByFirstName(String first_name);
-
 }
