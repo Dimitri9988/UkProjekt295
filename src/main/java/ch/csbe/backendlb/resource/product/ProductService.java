@@ -26,20 +26,23 @@ public class ProductService {
         ProductEntitie porductEntitie = this.productRepository.getById(id);
 
         ProductDetailDto productDetailDto = productMapper.toDetailDto(porductEntitie);
-        return productDetailDto;
+            return productDetailDto;
     }
+
+
+
 
 
     //Ruft alle Produkte auf und gibt sie zurück
     public List<ProductDetailDto> get() {
-        return productRepository.findAll().stream().map(productMapper::toDetailDto).collect(Collectors.toList());
+        return  productRepository.findAll().stream().map(productMapper::toDetailDto).collect(Collectors.toList());
     }
 
 
     // Erstellt ein neues Produkt mit den angegebenen daten
     public ProductDetailDto create(ProductCreateDto product) {
 
-        return productMapper.toDetailDto(productRepository.save(productMapper.toEntity(product)));
+        return productMapper.toDetailDto(productRepository.save(productMapper.toEntity(product))) ;
     }
 
     // aktualisiert ein Produkt anhand der Id mit den mitgegebenen Daten
@@ -66,5 +69,3 @@ public class ProductService {
 
     }
 }
-
-
