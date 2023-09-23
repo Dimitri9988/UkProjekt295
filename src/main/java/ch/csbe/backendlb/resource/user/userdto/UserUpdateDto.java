@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import java.util.Date;
 
+// DTO zum Aktualisirten eines Benutzers
 @Getter
 @Setter
 @Data

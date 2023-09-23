@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+// UserEntitie repräsentirt ein Benutzer Entrag in der Datenbank
 @Entity
 public class UserEntitie {
     @Id
@@ -38,6 +39,7 @@ public class UserEntitie {
     @Column(columnDefinition = "boolean",nullable = false)
     private Boolean authenticated;
 
+    //Getter und setter für die Felder von UserEntitit
     public Long getId() {
         return id;
     }
@@ -100,7 +102,7 @@ public class UserEntitie {
         this.authenticated = authenticated;
     }
 
-
+    // wen der Nutzer die Rolle Admin hat (authenticated) wird ihm die rolle "ROLE_ADMIN" hinzugefügt
     public List<String> getRoles() {
         List<String> Roles = new ArrayList<>();
         if (this.authenticated.equals(true)){

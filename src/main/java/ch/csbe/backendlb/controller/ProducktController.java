@@ -26,7 +26,7 @@ public class ProducktController {
     }
 
     //Verarbeited Get Anfrage Gibt Produkt zurück mit der passenden Id
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public ProductDetailDto getById(@PathVariable Long id) {
         return productService.getById(id);
     }

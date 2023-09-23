@@ -9,7 +9,10 @@ import java.util.Date;
 
 @Service
 public class TokenService {
+    //Geheimer Schlüssel zur Signirung des Tokens
     private final String SECRET_KEY = "yourMoreSecretKey";
+
+    // Erstelt Token für den angegeben benutzer
     public String generateToken(UserEntitie user) {
         return Jwts.builder()
                 .setSubject(user.getEmail())

@@ -6,6 +6,7 @@ import lombok.Data;
 
 import java.util.Date;
 
+// DTO zum Erstellen eines Benutzers
 @Data
 @Schema(description = "DTO für die Erstelung eines Benutzers")
 public class UserCreateDto {

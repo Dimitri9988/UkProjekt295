@@ -5,10 +5,10 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 
-
+// Mapper Klasse zur Umwandlung von verschidenen DTOs und Entitis
 @Mapper(componentModel = "spring")
 public abstract class ProductMapper {
-
+        // wandelt ProductCreateDto in ein ProductEntitie um
         @Mapping(target = "sku", source = "sku")
         @Mapping(target = "active", source = "active")
         @Mapping(target = "name", source = "name")
@@ -18,6 +18,7 @@ public abstract class ProductMapper {
         @Mapping(target = "stock", source = "stock")
         public abstract ProductEntitie toEntity(ProductCreateDto productCreateDto);
 
+        // wandelt ProductEntitie in ein ProductShowDto um
         @Mapping(target = "id", source = "id")
         @Mapping(target = "sku", source = "sku")
         @Mapping(target = "active", source = "active")
@@ -28,6 +29,7 @@ public abstract class ProductMapper {
         @Mapping(target = "stock", source = "stock")
         public abstract ProductShowDto toShowDto(ProductEntitie productEntitie);
 
+        // wandelt ProductEntitie in ein ProductDetailDto um
         @Mapping(target = "id", source = "id")
         @Mapping(target = "sku", source = "sku")
         @Mapping(target = "active", source = "active")
@@ -38,6 +40,7 @@ public abstract class ProductMapper {
         @Mapping(target = "stock", source = "stock")
         public abstract ProductDetailDto toDetailDto(ProductEntitie productEntitie);
 
+        // versucht vorhandenes ProductEntitie anhand von ProductUpdateDto zu aktualisiren
         @Mapping(target = "id", source = "id")
         @Mapping(target = "sku", source = "sku")
         @Mapping(target = "active", source = "active")

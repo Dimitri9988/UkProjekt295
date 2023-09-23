@@ -6,7 +6,7 @@ import lombok.Data;
 
 import java.util.Date;
 
-
+    //DTO für die Detailansicht eines Benutzers
     @Data
     @Schema(description = "DTOs für die Detailansicht eines Benutzers")
     public class UserDetailDto {

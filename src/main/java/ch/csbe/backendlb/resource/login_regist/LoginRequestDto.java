@@ -5,8 +5,10 @@ import lombok.Data;
 
 @Data
 public class LoginRequestDto {
+    // Email feld beim einlogen
     @NotNull
     private String email;
+    // Password feld beim einlogen
     @NotNull
     private String password;
 }

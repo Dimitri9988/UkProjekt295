@@ -5,6 +5,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
+// DTO zum Erstellen eines Produktes
 @Data
 @Schema(description = "DTOs für das erstellen eines Produktes")
 public class ProductCreateDto {

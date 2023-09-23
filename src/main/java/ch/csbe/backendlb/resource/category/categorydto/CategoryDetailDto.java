@@ -5,6 +5,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
+//DTO für die Detailansicht einer Kategory
 @Data
 @Schema (description = "DTO zur Detailansicht einer Kategory")
 public class CategoryDetailDto {

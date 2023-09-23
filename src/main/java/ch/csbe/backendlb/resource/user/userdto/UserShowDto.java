@@ -6,6 +6,7 @@ import lombok.Data;
 
 import java.util.Date;
 
+// ist DTO zum Anzeigen eines Benutzers
 @Data
 @Schema(description = "DTOs für das ansehen eines Benutzers")
 public class UserShowDto {

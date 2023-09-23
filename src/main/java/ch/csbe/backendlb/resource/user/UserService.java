@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+// Ist verantwortlich für die Logikt für die Benutzer
 @Service
 public class UserService {
     @Autowired
@@ -18,7 +19,7 @@ public class UserService {
 
     BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-
+    // Gibt alle Benutzer zurück
     public List<UserEntitie> get() {
         return userRepository.findAll();
     }
@@ -31,12 +32,13 @@ public class UserService {
         return userDetailDto;
     }
 
+    // Gibt Benutzer Details zurück anhand der Id
     public UserDetailDto create(UserCreateDto user) {
         return userMapper.toDetailDto(userRepository.save(userMapper.toEntity(user))) ;
     }
 
 
-
+    // aktualisiert ein Benutzer anhand der Id mit den mitgegebenen Daten
     public UserDetailDto update(Long id, UserUpdateDto user) {
         Optional<UserEntitie> userOptional = userRepository.findById(id);
         if (userOptional.isPresent()) {
@@ -48,12 +50,14 @@ public class UserService {
         return userMapper.toDetailDto(new UserEntitie());
     }
 
+    // Löscht ein Benutzer anhand der Id
     public void deleteById(Long id) {
         userRepository.deleteById(id);
 
 
     }
 
+    // Registrirt einen neuen Benutzer
     public UserShowDto register(UserCreateDto userCreateDto) {
         UserEntitie userEntitie = userMapper.toEntity(userCreateDto);
 
@@ -64,11 +68,15 @@ public class UserService {
         userRepository.save(userEntitie);
         return userMapper.toShowDto(userEntitie);
     }
+
+    // Sucht einen Benutzer anhand der Email
     public UserEntitie findUserByEmail(String email) {
         UserEntitie userEntitie = this.userRepository.findUserEntitieByEmail(email);
 
         return userEntitie;
     }
+
+    // Überprüft die Anmelde Infos eines Benutzer und gibt sin zurück wen sie übereinstimmen.
     public UserEntitie getUserWithCredentials(LoginRequestDto loginRequestDto) {
         UserEntitie userEntitie = findUserByEmail(loginRequestDto.getEmail());
         if(userEntitie != null) {

@@ -4,6 +4,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
+// ist DTO zum Anzeigen eines Produktes
 @Data
 public class ProductShowDto {
     @NotNull

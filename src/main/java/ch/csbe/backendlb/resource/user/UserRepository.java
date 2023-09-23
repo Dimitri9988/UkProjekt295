@@ -6,44 +6,21 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+//Inteagirt mit der Datenbank für die Benutzer Einträge
 @Repository
 @RepositoryRestResource(exported = false)
 public interface UserRepository extends JpaRepository<UserEntitie, Long> {
 
-
-
-
-
-
-
+    // Sucht anhand der Email einen Benutzer
     UserEntitie findUserEntitieByEmail(String email);
 
-    //UserEntitie updateUserEntitieById(Long id);
-
-    //UserEntitie saveUserEntitieById(Long id);
-
+    // Sucht anhand der Id einen Benutzer
     UserEntitie findUserEntitieById(Long id);
 
-    //UserEntitie deleteUserEntitieById(Long id);
-
+    // Sucht anhand von benutzernamen ensprechende Benutzer
     List<UserEntitie> findUserEntitiesByUsername(String username);
 
-    //List<UserEntitie> saveUserEntitiesByUsername(String username);
-
-    //List<UserEntitie> updateUserEntitiesByUsername(String username);
-
-    //List<UserEntitie> deleteUserEntitiesByUsername(String username);
-
+    // Sucht anhand des vornamens Ensprechende Benutzer
     List<UserEntitie> findUserEntitiesByFirstName(String first_name);
-
-    //List<UserEntitie> saveUserEntitiesByUserFirstName(String first_name);
-
-    //List<UserEntitie> updateUserEntitiesByFirstName(String first_name);
-
-    //List<UserEntitie> deleteUserEntitiesByFirstName(String first_name);
-
-
-
-
 
 }

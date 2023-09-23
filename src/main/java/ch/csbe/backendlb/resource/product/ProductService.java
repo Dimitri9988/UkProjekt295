@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+// Ist verantwortlich für die Logikt für die Produkte
 @Service
 public class ProductService {
 
@@ -19,7 +20,7 @@ public class ProductService {
     @Autowired
     ProductRepository productRepository;
 
-
+    // Ruft Details eines Produktes auf anhand der Id
     public ProductDetailDto getById(Long id) {
 
         ProductEntitie porductEntitie = this.productRepository.getById(id);
@@ -32,18 +33,19 @@ public class ProductService {
 
 
 
-
+    //Ruft alle Produkte auf und gibt sie zurück
     public List<ProductDetailDto> get() {
         return  productRepository.findAll().stream().map(productMapper::toDetailDto).collect(Collectors.toList());
     }
 
 
-
+    // Erstellt ein neues Produkt mit den angegebenen daten
     public ProductDetailDto create(ProductCreateDto product) {
 
         return productMapper.toDetailDto(productRepository.save(productMapper.toEntity(product))) ;
     }
 
+    // aktualisiert ein Produkt anhand der Id mit den mitgegebenen Daten
     public ProductDetailDto update(Long id, ProductUpdateDto product) {
         Optional<ProductEntitie> productOptional = productRepository.findById(id);
         if (productOptional.isPresent()) {
@@ -60,6 +62,7 @@ public class ProductService {
         return new ProductDetailDto();
     }
 
+    // Löscht ein Produkt anhand der Id
     public void deleteById(Long id) {
         productRepository.deleteById(id);
 

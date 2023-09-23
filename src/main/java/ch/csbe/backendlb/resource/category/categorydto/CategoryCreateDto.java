@@ -5,6 +5,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
+// DTO zum Erstellen einer Kategory
 @Data
 @Schema (description = "DTO zum erstellen einer Kategory")
 public class CategoryCreateDto {

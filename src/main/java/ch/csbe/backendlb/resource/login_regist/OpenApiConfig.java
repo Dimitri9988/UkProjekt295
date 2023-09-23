@@ -10,10 +10,13 @@ public class OpenApiConfig {
     @Bean
     public OpenAPI customOpenAPI() {
         final String securitySchemeName = "bearerAuth";
+        // OpenAPI Konfiguration erstellen.
         return new OpenAPI()
+                // Fügt Sicherheitsanforderung hinzu
                 .addSecurityItem(new SecurityRequirement().addList(securitySchemeName))
                 .components(
                         new Components()
+                                // Definiert das Sicherheitsschema W
                                 .addSecuritySchemes(securitySchemeName,
                                         new SecurityScheme()
                                                 .name(securitySchemeName)

@@ -4,7 +4,7 @@ import ch.csbe.backendlb.resource.product.ProductEntitie;
 import jakarta.persistence.*;
 
 import java.util.List;
-
+// CategoryEntitie repräsentirt ein Kategory Entrag in der Datenbank
 @Entity
 public class CategoryEntities {
     @Id
@@ -26,6 +26,7 @@ public class CategoryEntities {
         return ProductEntitie;
     }
 
+    // Getter und Setter für die Kategoryen
     public void setProductEntitie(List<ch.csbe.backendlb.resource.product.ProductEntitie> productEntitie) {
         ProductEntitie = productEntitie;
     }

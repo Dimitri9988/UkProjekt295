@@ -2,6 +2,7 @@ package ch.csbe.backendlb.resource.product;
 
 import jakarta.persistence.*;
 
+// ProduktEntitie repräsentirt ein Produkt Entrag in der Datenbank
 @Entity
 public class ProductEntitie {
     @Id
@@ -30,12 +31,11 @@ public class ProductEntitie {
     @Column(columnDefinition = "int",nullable = false)
     private String stock;
 
-
-
     @ManyToOne()
-
     private ch.csbe.backendlb.resource.category.CategoryEntities CategoryEntities;
 
+
+    // Getter und setter für die Felder von ProduktEntitit
     public Long getId() {
         return id;
     }

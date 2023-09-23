@@ -13,10 +13,12 @@ public class BackendLbApplication {
 
     ProductMapper productMapper;
 
+    // Hauptmetode welche die Applikation Started
     public static void main(String[] args) {
         SpringApplication.run(BackendLbApplication.class, args);
     }
 
+    // Konfiguriert die Product Mapper
     @Bean
     @Primary
     public ProductMapper productMapper() {

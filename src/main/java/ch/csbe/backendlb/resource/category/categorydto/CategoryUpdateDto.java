@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
+// DTO zum Aktualisirten einer Kategory
 @Getter
 @Setter
 @Data

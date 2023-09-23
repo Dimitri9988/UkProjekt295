@@ -29,7 +29,7 @@ import java.io.IOException;
             HttpServletResponse response,
             FilterChain chain
     ) throws ServletException, IOException {
-        // Schritt 2
+        //überprüft ob request einen authorizationHeader enthält
         final String authorizationHeader = request.getHeader("Authorization");
 
         String email = null;
@@ -40,16 +40,18 @@ import java.io.IOException;
             email = Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(jwt).getBody().getSubject();
         }
 
-        // Schritt 3
+        // Schaut ob benutzer breits autentifizirt ist
         if (email != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+            // Benutzer anhand der Email abrufen
             UserEntitie user = userService.findUserByEmail(email);
             MyUserPrincipal userPrincipal = new MyUserPrincipal(user);
             userPrincipal.setEmail(user.getEmail());
+            // Erstelt ein Authentifizirungs Token
             UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(userPrincipal, null, userPrincipal.getAuthorities());
-            // Schritt 4
+            // Benutzer in Sicherheitskontext enfügen
             SecurityContextHolder.getContext().setAuthentication(authenticationToken);
         }
-
+        // eiter zum nächsten Filter
         chain.doFilter(request, response);
     }
 }
