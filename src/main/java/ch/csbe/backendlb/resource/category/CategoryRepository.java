@@ -14,5 +14,4 @@ public interface CategoryRepository extends JpaRepository<CategoryEntities, Long
 
     //Sucht eine Kategorie anhand der ID
     CategoryEntities findCategoryEntitiesById(Long id);
-
 }
