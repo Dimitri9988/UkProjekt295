@@ -7,28 +7,28 @@ import jakarta.persistence.*;
 public class ProductEntitie {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(columnDefinition = ("int"), nullable = false)
+    @Column(columnDefinition = ("int"),nullable = false)
     private Long id;
 
-    @Column(columnDefinition = "varchar(100)", nullable = false)
+    @Column(columnDefinition = "varchar(100)",nullable = false)
     private String sku;
 
-    @Column(columnDefinition = "tinyint", nullable = false)
+    @Column(columnDefinition = "tinyint",nullable = false)
     private String active;
 
-    @Column(columnDefinition = "varchar(500)", nullable = false)
+    @Column(columnDefinition = "varchar(500)",nullable = false)
     private String name;
 
-    @Column(columnDefinition = "varchar(1000)", nullable = false)
+    @Column(columnDefinition = "varchar(1000)",nullable = false)
     private String images;
 
-    @Column(columnDefinition = "mediumtext", nullable = false)
+    @Column(columnDefinition = "mediumtext",nullable = false)
     private String description;
 
-    @Column(columnDefinition = "float", nullable = false)
+    @Column(columnDefinition = "float",nullable = false)
     private Double prise;
 
-    @Column(columnDefinition = "int", nullable = false)
+    @Column(columnDefinition = "int",nullable = false)
     private String stock;
 
     @ManyToOne()
