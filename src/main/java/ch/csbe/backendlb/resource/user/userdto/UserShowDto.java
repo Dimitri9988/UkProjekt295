@@ -19,7 +19,7 @@ public class UserShowDto {
     public String firstName;
     @NotNull
     @Schema(description = "Nachname des Benutzers")
-    public String lastName;
+    public  String lastName;
     @NotNull
     @Schema(description = "Benutzername des Benutzers")
     public String username;
