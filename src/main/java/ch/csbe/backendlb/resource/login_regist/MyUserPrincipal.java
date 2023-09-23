@@ -70,4 +70,3 @@ public class MyUserPrincipal implements UserDetails {
         this.user.setEmail(email);
     }
 }
-
