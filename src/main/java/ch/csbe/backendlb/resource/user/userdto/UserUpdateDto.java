@@ -18,7 +18,7 @@ public class UserUpdateDto {
     @Schema(description = "Vorname des Benutzers")
     public String firstName;
     @Schema(description = "Nachname des Benutzers")
-    public String lastName;
+    public  String lastName;
     @Schema(description = "Benutzername des Benutzers")
     public String username;
     @Schema(description = "E-Mail des Benutzers")
