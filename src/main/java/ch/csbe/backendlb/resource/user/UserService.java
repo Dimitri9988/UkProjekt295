@@ -34,7 +34,7 @@ public class UserService {
 
     // Gibt Benutzer Details zurück anhand der Id
     public UserDetailDto create(UserCreateDto user) {
-        return userMapper.toDetailDto(userRepository.save(userMapper.toEntity(user)));
+        return userMapper.toDetailDto(userRepository.save(userMapper.toEntity(user))) ;
     }
 
 
@@ -62,7 +62,7 @@ public class UserService {
         UserEntitie userEntitie = userMapper.toEntity(userCreateDto);
 
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        String hashedPassword = encoder.encode(userCreateDto.getPassword());
+        String hashedPassword = encoder.encode( userCreateDto.getPassword());
 
         userEntitie.setPassword(hashedPassword);
         userRepository.save(userEntitie);
@@ -79,9 +79,9 @@ public class UserService {
     // Überprüft die Anmelde Infos eines Benutzer und gibt sin zurück wen sie übereinstimmen.
     public UserEntitie getUserWithCredentials(LoginRequestDto loginRequestDto) {
         UserEntitie userEntitie = findUserByEmail(loginRequestDto.getEmail());
-        if (userEntitie != null) {
+        if(userEntitie != null) {
             boolean isPasswordMatch = encoder.matches(loginRequestDto.getPassword(), userEntitie.getPassword());
-            if (isPasswordMatch) {
+            if(isPasswordMatch) {
                 return userEntitie;
             }
         }
@@ -89,5 +89,3 @@ public class UserService {
         return null;
     }
 }
-
-
