@@ -52,5 +52,4 @@ public abstract class UserMapper {
     @Mapping(target = "authenticated", source = "authenticated", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     public abstract void update(UserUpdateDto userUpdateDto, @MappingTarget UserEntitie userEntitieToUpdate);
 
-
 }
