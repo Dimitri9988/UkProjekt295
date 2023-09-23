@@ -1,5 +1,4 @@
 package ch.csbe.backendlb.controller;
-
 import ch.csbe.backendlb.resource.category.CategoryService;
 import ch.csbe.backendlb.resource.category.categorydto.CategoryCreateDto;
 import ch.csbe.backendlb.resource.category.categorydto.CategoryDetailDto;
@@ -18,7 +17,6 @@ import java.util.List;
 @Tag(name = "CategoryController", description = "Controller für Kategorien")
 @RequestMapping("/productscategories")
 public class ProductCategoryController {
-
     @Autowired
     CategoryService categoryService;
 
